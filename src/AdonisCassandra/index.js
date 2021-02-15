@@ -9,11 +9,10 @@
  */
 
 class AdonisCassandra {
-    constructor({ Config, CassandraClient }) {
+    constructor({ Config, Cassanknex }) {
         this.Config = Config;
         this.configuration = this.Config.get('cassandra');
-
-        this.Client = CassandraClient;
+        this.Client = Cassanknex;
     }
 
     /**
@@ -42,7 +41,7 @@ class AdonisCassandra {
             return this.db;
         }
 
-        this.db = this.Client(this.configuration);
+        this.db = this.Client({connection:this.configuration});
         await this.connectPromise.on('ready');
 
         return this.db;
