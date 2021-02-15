@@ -1,11 +1,11 @@
 const { ServiceProvider } = require('@adonisjs/fold');
-const Cassanknex = require('cassanknex');
+const CassandraDriver = require('cassandra-driver');
 
 class AdonisCassandraProvider extends ServiceProvider {
     register() {
         this.app.singleton('Cassandra', () => {
             const Config = this.app.use('Adonis/Src/Config');
-            return new (require('../src/AdonisCassandra'))({ Config, Cassanknex });
+            return new (require('../src/AdonisCassandra'))({ Config, CassandraDriver });
         });
     }
 

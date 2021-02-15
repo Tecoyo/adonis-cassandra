@@ -1,10 +1,13 @@
 const Env = use('Env')
 
+const cassandra = require('cassandra-driver');
+
 module.exports = {
+    keyspace:Env.get('CASS_KEYSPACE', 'users'),
+    authProvider: new cassandra.auth.PlainTextAuthProvider(Env.get('CASS_USERNAME', 'admin'),Env.get('CASS_PASSWORD', 'admin')),
     credentials: { 
         username: Env.get('CASS_USERNAME', 'admin'), 
         passsword: Env.get('CASS_PASSWORD', 'admin'), 
-    }
+    },
     contactPoints: [ Env.get('CASS_HOST', 'localhost') ],
-    localDataCenter: Env.get('CASS_DATACENTER', 'datacenter1') ,
 };

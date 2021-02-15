@@ -9,10 +9,10 @@
  */
 
 class AdonisCassandra {
-    constructor({ Config, Cassanknex }) {
+    constructor({ Config, CassandraDriver }) {
         this.Config = Config;
         this.configuration = this.Config.get('cassandra');
-        this.Client = Cassanknex;
+        this.Client = CassandraDriver.Client;
     }
 
     /**
@@ -40,18 +40,10 @@ class AdonisCassandra {
             console.log('Client is already connected, returning...');
             return this.db;
         }
-
-        this.db = this.Client({ connection: this.configuration });
-        await this.connectPromise('ready');
-
+        this.db = new this.Client({ ...this.configuration });
         return this.db;
     }
 
-    connectPromise(event) {
-        return new Promise(resolve => {
-            this.db.on(event, response => resolve(response));
-        });
-    }
 }
 
 module.exports = AdonisCassandra;

@@ -27,7 +27,7 @@
     },
     "homepage": "https://github.com/Tecoyo/adonis-cassandra#readme",
     "dependencies": {
-        "cassanknex": "^1.20.3",
+        "cassandra-driver": "^4.6.1",
         "express-cassandra": "^2.5.0"
     },
     "devDependencies": {
