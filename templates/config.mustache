@@ -1,12 +1,10 @@
 const Env = use('Env')
 
 module.exports = {
-    host: Env.get('DB_HOST', 'localhost'),
-    port: Env.get('DB_PORT', 27017),
-    username: Env.get('DB_USER', ''),
-    password: Env.get('DB_PASSWORD', ''),
-    database: Env.get('DB_DATABASE', 'adonis'),
-    options: {
-        // authSource: Env.get('DB_AUTH_SOURCE', '')
-    },
+    credentials: { 
+        username: Env.get('CASS_USERNAME', 'admin'), 
+        passsword: Env.get('CASS_PASSWORD', 'admin'), 
+    }
+    contactPoints: [ Env.get('CASS_HOST', 'localhost') ],
+    localDataCenter: Env.get('CASS_DATACENTER', 'datacenter1') ,
 };

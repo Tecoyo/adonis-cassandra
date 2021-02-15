@@ -11,8 +11,8 @@ const path = require('path');
 
 module.exports = async cli => {
     try {
-        await cli.makeConfig('mongodb.js', path.join(__dirname, './templates/config.mustache'));
-        cli.command.completed('create', 'config/mongodb.js');
+        await cli.makeConfig('cassandra.js', path.join(__dirname, './templates/config.mustache'));
+        cli.command.completed('create', 'config/cassandra.js');
     } catch (error) {
         // ignore errors
     }

@@ -1,17 +1,17 @@
 const { ServiceProvider } = require('@adonisjs/fold');
-const { MongoClient, ObjectID } = require('mongodb');
+const cassanknex = require('cassanknex');
 
 class AdonisMongodbProvider extends ServiceProvider {
     register() {
-        this.app.singleton('MongoClient', () => {
+        this.app.singleton('Cassandra', () => {
             const Config = this.app.use('Adonis/Src/Config');
-            return new (require('../src/AdonisMongodb'))({ Config, MongoClient, ObjectID });
+            return new (require('../src/AdonisCassandra'))({ Config,cassanknex });
         });
     }
 
     boot() {
         /** @type {import('../src/AdonisMongodb')} */
-        const Client = this.app.use('MongoClient');
+        const Client = this.app.use('Cassandra');
         Client.connect();
     }
 }
