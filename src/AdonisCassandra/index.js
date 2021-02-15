@@ -41,8 +41,8 @@ class AdonisCassandra {
             return this.db;
         }
 
-        this.db = this.Client({connection:this.configuration});
-        await this.connectPromise.on('ready');
+        this.db = this.Client({ connection: this.configuration });
+        await this.connectPromise('ready');
 
         return this.db;
     }
