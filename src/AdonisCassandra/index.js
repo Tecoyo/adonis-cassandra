@@ -49,7 +49,7 @@ class AdonisCassandra {
 
     connectPromise(event) {
         return new Promise(resolve => {
-            this.db.api.on(event, response => resolve(response));
+            this.db.on(event, response => resolve(response));
         });
     }
 }
