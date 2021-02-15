@@ -43,7 +43,6 @@ class AdonisCassandra {
         this.db = new this.Client({ ...this.configuration });
         return this.db;
     }
-
 }
 
 module.exports = AdonisCassandra;
