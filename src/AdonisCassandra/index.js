@@ -8,13 +8,11 @@
  * @class AdonisCassandra
  */
 
-
 class AdonisCassandra {
     constructor({ Config, CassandraClient }) {
         this.Config = Config;
-        this.ObjectID = ObjectID;
         this.configuration = this.Config.get('cassandra');
-        
+
         this.Client = CassandraClient;
     }
 
@@ -44,17 +42,9 @@ class AdonisCassandra {
             return this.db;
         }
 
-        this.db = this.Client(this.configuration)
-        await this.connectPromise.on("ready")
+        this.db = this.Client(this.configuration);
+        await this.connectPromise.on('ready');
 
-        await this.Client.connect(this.url, { useNewUrlParser: true }, (err, client) => {
-            if (err) {
-                throw new Error(err);
-            }
-            this.db = client.db(this.dbName);
-            this.Client = client;
-            console.log(`Connected successfully to ${this.host}:${this.port}/${this.dbName}`);
-        });
         return this.db;
     }
 
@@ -63,7 +53,6 @@ class AdonisCassandra {
             this.db.api.on(event, response => resolve(response));
         });
     }
-
 }
 
 module.exports = AdonisCassandra;

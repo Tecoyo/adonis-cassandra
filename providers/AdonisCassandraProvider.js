@@ -5,7 +5,7 @@ class AdonisMongodbProvider extends ServiceProvider {
     register() {
         this.app.singleton('Cassandra', () => {
             const Config = this.app.use('Adonis/Src/Config');
-            return new (require('../src/AdonisCassandra'))({ Config,cassanknex });
+            return new (require('../src/AdonisCassandra'))({ Config, cassanknex });
         });
     }
 
